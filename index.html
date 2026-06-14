@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T&amp;O Development Group LLC — Real Estate Development &amp; Investment</title>
+<meta name="description" content="T&amp;O Development Group is a Rhode Island–based real estate development and investment firm. We acquire, develop, and manage real estate assets built to endure.">
+<meta name="theme-color" content="#161617">
+<link rel="icon" type="image/png" href="assets/logo.png"/>
+<link rel="apple-touch-icon" href="assets/logo.png"/>
+<!-- Social sharing -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="T&amp;O Development Group LLC — We create value through real estate."/>
+<meta property="og:description" content="A Rhode Island–based real estate development and investment firm. We acquire, develop, and manage real estate assets built to endure."/>
+<meta property="og:image" content="assets/logo.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="T&amp;O Development Group LLC"/>
+<meta name="twitter:description" content="We create value through real estate. Acquisitions · Development · Investments."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div style="position:relative;width:100%;overflow-x:clip;">
+
+  <!-- ============ HEADER ============ -->
+  <header id="site-header" style="position:fixed;top:0;left:0;right:0;z-index:120;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px clamp(20px,5vw,72px);color:#fff;background:transparent;transition:background .45s ease,padding .45s ease,box-shadow .45s ease,color .45s ease;">
+    <a href="#hero" data-target="hero" style="display:flex;align-items:center;text-decoration:none;flex:0 0 auto;">
+      <img id="site-logo" src="assets/logo-light.png" alt="T&amp;O Development Group" style="height:46px;width:auto;display:block;transition:opacity .3s ease;"/>
+    </a>
+    <nav id="site-nav" style="align-items:center;gap:clamp(22px,2.4vw,42px);">
+      <a class="link-red" href="#approach" data-target="approach" style="font-size:14px;font-weight:500;letter-spacing:.01em;color:inherit;text-decoration:none;">Approach</a>
+      <a class="link-red" href="#process" data-target="process" style="font-size:14px;font-weight:500;letter-spacing:.01em;color:inherit;text-decoration:none;">Process</a>
+      <a class="link-red" href="#projects" data-target="projects" style="font-size:14px;font-weight:500;letter-spacing:.01em;color:inherit;text-decoration:none;">Projects</a>
+      <a class="link-red" href="#about" data-target="about" style="font-size:14px;font-weight:500;letter-spacing:.01em;color:inherit;text-decoration:none;">About</a>
+      <a class="btn-cta" href="#contact" data-target="contact" style="display:inline-flex;align-items:center;gap:8px;background:#D90A0F;color:#fff;font-size:14px;font-weight:500;letter-spacing:.01em;padding:11px 20px;border-radius:4px;text-decoration:none;transition:background .25s ease,transform .25s ease,box-shadow .25s ease;box-shadow:0 6px 16px rgba(217,10,15,.22);">Get in touch</a>
+    </nav>
+    <button id="nav-toggle" aria-label="Menu" style="flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:transparent;border:none;cursor:pointer;color:inherit;padding:0;">
+      <span style="display:block;width:24px;height:2px;background:currentColor;"></span>
+      <span style="display:block;width:24px;height:2px;background:currentColor;"></span>
+      <span style="display:block;width:16px;height:2px;background:currentColor;"></span>
+    </button>
+  </header>
+
+  <!-- mobile overlay menu -->
+  <div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:130;background:#161617;flex-direction:column;padding:28px clamp(20px,6vw,48px);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;">
+      <img src="assets/logo-light.png" alt="T&amp;O" style="height:44px;"/>
+      <button data-menu-close aria-label="Close" style="width:44px;height:44px;background:transparent;border:none;color:#fff;font-size:30px;line-height:1;cursor:pointer;">&times;</button>
+    </div>
+    <a class="m-link" href="#approach" data-target="approach" style="font-family:'Fraunces',serif;font-size:34px;color:#FAFAF8;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);">Approach</a>
+    <a class="m-link" href="#process" data-target="process" style="font-family:'Fraunces',serif;font-size:34px;color:#FAFAF8;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);">Process</a>
+    <a class="m-link" href="#projects" data-target="projects" style="font-family:'Fraunces',serif;font-size:34px;color:#FAFAF8;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);">Projects</a>
+    <a class="m-link" href="#about" data-target="about" style="font-family:'Fraunces',serif;font-size:34px;color:#FAFAF8;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);">About</a>
+    <a href="#contact" data-target="contact" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#D90A0F;color:#fff;font-size:16px;font-weight:500;padding:18px 26px;border-radius:4px;text-decoration:none;">Get in touch &rarr;</a>
+  </div>
+
+  <!-- ============ HERO (scroll-driven, pinned) ============ -->
+  <div id="hero-scroll" style="position:relative;height:400vh;">
+  <section id="hero" style="position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#161617;">
+    <video id="hero-video" muted="muted" playsinline="playsinline" preload="auto" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+      <source src="assets/daydusk-scrub.mp4" type="video/mp4"/>
+    </video>
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(15,15,16,.94) 0%,rgba(15,15,16,.8) 26%,rgba(18,18,19,.42) 56%,rgba(18,18,19,.12) 82%,rgba(18,18,19,.28) 100%);"></div>
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,15,16,.5) 0%,rgba(15,15,16,0) 22%,rgba(15,15,16,0) 60%,rgba(15,15,16,.7) 100%);"></div>
+    <div class="hero-overlay-mobile" style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,15,16,.6) 0%,rgba(15,15,16,.25) 38%,rgba(15,15,16,.82) 100%);opacity:0;transition:opacity .3s ease;pointer-events:none;"></div>
+
+    <div class="hero-row" style="position:relative;z-index:2;flex:1 1 auto;display:flex;width:100%;max-width:1320px;margin:0 auto;padding-left:clamp(20px,5vw,72px);padding-right:clamp(20px,5vw,72px);">
+      <div class="hero-content" style="max-width:760px;padding:0;">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:14px;margin-bottom:30px;">
+          <span style="width:30px;height:2px;background:#D90A0F;display:block;"></span>
+          <span style="font-size:clamp(11px,1.1vw,13px);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,248,.86);">Real Estate Development &middot; Acquisitions &middot; Investments</span>
+        </div>
+        <div id="hero-headlines" style="position:relative;margin:0 0 28px;">
+          <h1 class="hero-headline is-active" data-i="0">We create <span class="em">value</span> through real&nbsp;estate.</h1>
+          <h1 class="hero-headline" data-i="1">It starts with the right <span class="em">opportunity</span>.</h1>
+          <h1 class="hero-headline" data-i="2">We develop, build, and <span class="em">elevate</span>.</h1>
+          <h1 class="hero-headline" data-i="3">Into assets that <span class="em">endure</span>.</h1>
+        </div>
+        <p data-reveal data-reveal-delay="180" style="margin:0 0 40px;max-width:540px;font-size:clamp(16px,1.4vw,19px);line-height:1.62;color:rgba(250,250,248,.78);font-weight:300;">We acquire, develop, and manage real estate assets. We identify opportunities and turn them into investments that endure.</p>
+        <div data-reveal data-reveal-delay="260" style="display:flex;flex-wrap:wrap;gap:16px;">
+          <a class="btn-hero" href="#approach" data-target="approach" style="display:inline-flex;align-items:center;gap:10px;background:#D90A0F;color:#fff;font-size:15px;font-weight:500;letter-spacing:.01em;padding:17px 28px;border-radius:4px;text-decoration:none;transition:background .25s ease,transform .25s ease,box-shadow .25s ease;box-shadow:0 8px 22px rgba(217,10,15,.26);">Explore our approach <span style="font-size:16px;">&rarr;</span></a>
+          <a class="btn-ghost" href="#projects" data-target="projects" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:#FAFAF8;font-size:15px;font-weight:500;letter-spacing:.01em;padding:16px 28px;border-radius:4px;text-decoration:none;border:1px solid rgba(250,250,248,.34);transition:border-color .25s ease,background .25s ease,transform .25s ease;">View projects</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- phase row -->
+    <div style="position:relative;z-index:2;width:100%;border-top:1px solid rgba(250,250,248,.16);">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,72px);">
+        <div id="phase-grid" style="display:grid;">
+          <div class="phase-item is-active" data-phase="0" style="padding:24px clamp(18px,2vw,30px);display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Fraunces',serif;font-size:15px;color:#D90A0F;flex:0 0 auto;">01</span>
+            <span style="font-size:14px;letter-spacing:.04em;color:rgba(250,250,248,.82);">Acquisition</span>
+          </div>
+          <div class="phase-item" data-phase="1" style="padding:24px clamp(18px,2vw,30px);display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Fraunces',serif;font-size:15px;color:#D90A0F;flex:0 0 auto;">02</span>
+            <span style="font-size:14px;letter-spacing:.04em;color:rgba(250,250,248,.82);">Development</span>
+          </div>
+          <div class="phase-item" data-phase="2" style="padding:24px clamp(18px,2vw,30px);display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Fraunces',serif;font-size:15px;color:#D90A0F;flex:0 0 auto;">03</span>
+            <span style="font-size:14px;letter-spacing:.04em;color:rgba(250,250,248,.82);">Execution</span>
+          </div>
+          <div class="phase-item" data-phase="3" style="padding:24px clamp(18px,2vw,30px);display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Fraunces',serif;font-size:15px;color:#D90A0F;flex:0 0 auto;">04</span>
+            <span style="font-size:14px;letter-spacing:.04em;color:rgba(250,250,248,.82);">Asset</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- /hero-scroll -->
+
+  <!-- ============ INTRO / POSITIONING ============ -->
+  <section style="background:#FAFAF8;padding:clamp(96px,14vh,180px) clamp(20px,5vw,72px);">
+    <div style="max-width:1320px;margin:0 auto;">
+      <div data-reveal style="display:inline-flex;align-items:center;gap:14px;margin-bottom:38px;">
+        <span style="width:30px;height:2px;background:#D90A0F;display:block;"></span>
+        <span style="font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#575758;">Positioning</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="80" style="margin:0;max-width:1040px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2rem,4.4vw,3.8rem);line-height:1.14;letter-spacing:-.015em;color:#161617;">We identify opportunities others overlook, and develop them into real estate investments <span style="font-style:italic;color:#D90A0F;">built to endure.</span></h2>
+
+      <div data-reveal data-reveal-delay="160" style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,80px);margin-top:clamp(56px,8vh,96px);padding-top:46px;border-top:1px solid rgba(22,22,23,.12);">
+        <div style="flex:1 1 220px;">
+          <div style="font-family:'Fraunces',serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2.6rem,4vw,3.4rem);line-height:1;color:#161617;letter-spacing:-.02em;">15<span style="color:#D90A0F;">+</span></div>
+          <div style="margin-top:12px;font-size:14px;line-height:1.5;color:#575758;">Years developing &amp; investing across Rhode Island</div>
+        </div>
+        <div style="flex:1 1 220px;">
+          <div style="font-family:'Fraunces',serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2.6rem,4vw,3.4rem);line-height:1;color:#161617;letter-spacing:-.02em;">40<span style="color:#D90A0F;">+</span></div>
+          <div style="margin-top:12px;font-size:14px;line-height:1.5;color:#575758;">Projects acquired, developed and delivered</div>
+        </div>
+        <div style="flex:1 1 220px;">
+          <div style="font-family:'Fraunces',serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2.6rem,4vw,3.4rem);line-height:1;color:#161617;letter-spacing:-.02em;">$250<span style="color:#D90A0F;">M+</span></div>
+          <div style="margin-top:12px;font-size:14px;line-height:1.5;color:#575758;">Real estate value under management</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH / CAPABILITIES ============ -->
+  <section id="approach" style="background:#fff;padding:clamp(90px,12vh,160px) clamp(20px,5vw,72px);border-top:1px solid rgba(22,22,23,.07);">
+    <div style="max-width:1320px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:clamp(40px,6vh,72px);">
+        <div data-reveal style="max-width:640px;">
+          <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:26px;">
+            <span style="width:30px;height:2px;background:#D90A0F;display:block;"></span>
+            <span style="font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#575758;">Approach</span>
+          </div>
+          <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.12;letter-spacing:-.015em;color:#161617;">Four disciplines, one continuous pursuit of value.</h2>
+        </div>
+        <p data-reveal data-reveal-delay="80" style="flex:1 1 280px;max-width:380px;margin:0;font-size:16px;line-height:1.66;color:#575758;font-weight:300;">From the first underwriting to long-term stewardship, our capabilities work as a single, integrated practice.</p>
+      </div>
+
+      <div style="border-bottom:1px solid rgba(22,22,23,.12);">
+        <div data-reveal class="cap-row" style="display:flex;flex-wrap:wrap;gap:clamp(20px,5vw,72px);align-items:flex-start;padding:clamp(30px,4vw,48px) clamp(0px,1.5vw,20px);border-top:1px solid rgba(22,22,23,.12);transition:background .35s ease,padding-left .35s ease;">
+          <div style="flex:0 0 auto;font-family:'Fraunces',serif;font-weight:400;font-size:clamp(18px,1.5vw,22px);color:#D90A0F;width:54px;">01</div>
+          <h3 style="flex:0 0 clamp(180px,20vw,280px);margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.08;letter-spacing:-.01em;color:#161617;">Acquisitions</h3>
+          <p style="flex:1 1 320px;min-width:240px;margin:0;font-size:16px;line-height:1.66;color:#575758;">We source and acquire well-positioned properties through deep local relationships and disciplined underwriting, moving decisively when conviction is high.</p>
+        </div>
+        <div data-reveal data-reveal-delay="60" class="cap-row" style="display:flex;flex-wrap:wrap;gap:clamp(20px,5vw,72px);align-items:flex-start;padding:clamp(30px,4vw,48px) clamp(0px,1.5vw,20px);border-top:1px solid rgba(22,22,23,.12);transition:background .35s ease,padding-left .35s ease;">
+          <div style="flex:0 0 auto;font-family:'Fraunces',serif;font-weight:400;font-size:clamp(18px,1.5vw,22px);color:#D90A0F;width:54px;">02</div>
+          <h3 style="flex:0 0 clamp(180px,20vw,280px);margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.08;letter-spacing:-.01em;color:#161617;">Development</h3>
+          <p style="flex:1 1 320px;min-width:240px;margin:0;font-size:16px;line-height:1.66;color:#575758;">We entitle, design, and reposition assets, unlocking value through thoughtful, well-executed development that respects its context and its market.</p>
+        </div>
+        <div data-reveal data-reveal-delay="120" class="cap-row" style="display:flex;flex-wrap:wrap;gap:clamp(20px,5vw,72px);align-items:flex-start;padding:clamp(30px,4vw,48px) clamp(0px,1.5vw,20px);border-top:1px solid rgba(22,22,23,.12);transition:background .35s ease,padding-left .35s ease;">
+          <div style="flex:0 0 auto;font-family:'Fraunces',serif;font-weight:400;font-size:clamp(18px,1.5vw,22px);color:#D90A0F;width:54px;">03</div>
+          <h3 style="flex:0 0 clamp(180px,20vw,280px);margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.08;letter-spacing:-.01em;color:#161617;">Investment</h3>
+          <p style="flex:1 1 320px;min-width:240px;margin:0;font-size:16px;line-height:1.66;color:#575758;">We deploy capital with patience and conviction, structuring investments for durable, long-term returns rather than short-term gain.</p>
+        </div>
+        <div data-reveal data-reveal-delay="180" class="cap-row" style="display:flex;flex-wrap:wrap;gap:clamp(20px,5vw,72px);align-items:flex-start;padding:clamp(30px,4vw,48px) clamp(0px,1.5vw,20px);border-top:1px solid rgba(22,22,23,.12);transition:background .35s ease,padding-left .35s ease;">
+          <div style="flex:0 0 auto;font-family:'Fraunces',serif;font-weight:400;font-size:clamp(18px,1.5vw,22px);color:#D90A0F;width:54px;">04</div>
+          <h3 style="flex:0 0 clamp(180px,20vw,280px);margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.08;letter-spacing:-.01em;color:#161617;">Project Management</h3>
+          <p style="flex:1 1 320px;min-width:240px;margin:0;font-size:16px;line-height:1.66;color:#575758;">We oversee every project from groundbreaking to delivery, holding our partners to uncompromising standards of quality and accountability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS / HOW WE CREATE VALUE ============ -->
+  <section id="process" style="background:#161617;padding:clamp(90px,13vh,170px) clamp(20px,5vw,72px);">
+    <div style="max-width:1320px;margin:0 auto;">
+      <div data-reveal style="max-width:760px;margin-bottom:clamp(52px,8vh,90px);">
+        <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="width:30px;height:2px;background:#D90A0F;display:block;"></span>
+          <span style="font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,248,.7);">How we create value</span>
+        </div>
+        <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2rem,3.8vw,3.3rem);line-height:1.12;letter-spacing:-.015em;color:#FAFAF8;">A disciplined path from opportunity to <span style="font-style:italic;color:#D90A0F;">lasting value.</span></h2>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,3vw,16px);">
+        <div data-reveal style="flex:1 1 220px;min-width:210px;">
+          <div style="display:flex;align-items:center;gap:0;margin-bottom:26px;">
+            <span style="width:13px;height:13px;background:#D90A0F;border-radius:50%;display:block;flex:0 0 auto;box-shadow:0 0 0 7px rgba(217,10,15,.14);"></span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(217,10,15,.7),rgba(250,250,248,.12));display:block;"></span>
+          </div>
+          <div style="font-family:'Fraunces',serif;font-size:14px;color:rgba(250,250,248,.5);margin-bottom:10px;">01</div>
+          <h3 style="margin:0 0 12px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(1.4rem,2vw,1.85rem);line-height:1.1;color:#FAFAF8;">Identify</h3>
+          <p style="margin:0;padding-right:18px;font-size:15px;line-height:1.62;color:rgba(250,250,248,.6);font-weight:300;">We source opportunities through relationships and rigorous underwriting, well before they reach the broader market.</p>
+        </div>
+        <div data-reveal data-reveal-delay="100" style="flex:1 1 220px;min-width:210px;">
+          <div style="display:flex;align-items:center;gap:0;margin-bottom:26px;">
+            <span style="width:13px;height:13px;background:#D90A0F;border-radius:50%;display:block;flex:0 0 auto;box-shadow:0 0 0 7px rgba(217,10,15,.14);"></span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(217,10,15,.7),rgba(250,250,248,.12));display:block;"></span>
+          </div>
+          <div style="font-family:'Fraunces',serif;font-size:14px;color:rgba(250,250,248,.5);margin-bottom:10px;">02</div>
+          <h3 style="margin:0 0 12px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(1.4rem,2vw,1.85rem);line-height:1.1;color:#FAFAF8;">Develop</h3>
+          <p style="margin:0;padding-right:18px;font-size:15px;line-height:1.62;color:rgba(250,250,248,.6);font-weight:300;">We design, entitle, and reposition assets, shaping each project to unlock its full potential.</p>
+        </div>
+        <div data-reveal data-reveal-delay="200" style="flex:1 1 220px;min-width:210px;">
+          <div style="display:flex;align-items:center;gap:0;margin-bottom:26px;">
+            <span style="width:13px;height:13px;background:#D90A0F;border-radius:50%;display:block;flex:0 0 auto;box-shadow:0 0 0 7px rgba(217,10,15,.14);"></span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(217,10,15,.7),rgba(250,250,248,.12));display:block;"></span>
+          </div>
+          <div style="font-family:'Fraunces',serif;font-size:14px;color:rgba(250,250,248,.5);margin-bottom:10px;">03</div>
+          <h3 style="margin:0 0 12px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(1.4rem,2vw,1.85rem);line-height:1.1;color:#FAFAF8;">Build</h3>
+          <p style="margin:0;padding-right:18px;font-size:15px;line-height:1.62;color:rgba(250,250,248,.6);font-weight:300;">We execute with experienced partners and uncompromising standards, delivering with precision and care.</p>
+        </div>
+        <div data-reveal data-reveal-delay="300" style="flex:1 1 220px;min-width:210px;">
+          <div style="display:flex;align-items:center;gap:0;margin-bottom:26px;">
+            <span style="width:13px;height:13px;background:#D90A0F;border-radius:50%;display:block;flex:0 0 auto;box-shadow:0 0 0 7px rgba(217,10,15,.14);"></span>
+            <span style="flex:1;height:1px;background:rgba(250,250,248,.12);display:block;"></span>
+          </div>
+          <div style="font-family:'Fraunces',serif;font-size:14px;color:rgba(250,250,248,.5);margin-bottom:10px;">04</div>
+          <h3 style="margin:0 0 12px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(1.4rem,2vw,1.85rem);line-height:1.1;color:#FAFAF8;">Manage long-term</h3>
+          <p style="margin:0;padding-right:18px;font-size:15px;line-height:1.62;color:rgba(250,250,248,.6);font-weight:300;">We hold and steward our assets to compound value over time, measuring success in decades, not quarters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS / PORTFOLIO ============ -->
+  <section id="projects" style="background:#FAFAF8;padding:clamp(90px,12vh,160px) clamp(20px,5vw,72px);">
+    <div style="max-width:1320px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:clamp(40px,6vh,68px);">
+        <div data-reveal style="max-width:640px;">
+          <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:26px;">
+            <span style="width:30px;height:2px;background:#D90A0F;display:block;"></span>
+            <span style="font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#575758;">Selected Work</span>
+          </div>
+          <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.12;letter-spacing:-.015em;color:#161617;">A portfolio shaped over time.</h2>
+        </div>
+        <p data-reveal data-reveal-delay="80" style="flex:1 1 280px;max-width:360px;margin:0;font-size:16px;line-height:1.66;color:#575758;font-weight:300;">A selection of completed and active developments across Rhode Island. Photography to follow.</p>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,1.4vw,18px);">
+        <a class="tile" href="#contact" data-target="contact" data-reveal style="position:relative;overflow:hidden;border-radius:3px;background:#e7e7e3;flex:1.7 1 380px;min-width:260px;height:clamp(320px,42vw,470px);display:block;text-decoration:none;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#e9e9e5 0 16px,#efefeb 16px 32px);"></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a9a3;">Project image</span></div>
+          <div data-ov style="position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(22,22,23,0) 30%,rgba(22,22,23,.86) 100%);transition:opacity .45s ease;"></div>
+          <div data-cap style="position:absolute;left:0;bottom:0;padding:30px 32px;opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease;">
+            <div style="width:26px;height:2px;background:#D90A0F;margin-bottom:14px;"></div>
+            <div style="font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.2vw,2rem);color:#FAFAF8;line-height:1.1;">The Carrington</div>
+            <div style="margin-top:6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,248,.66);">Providence, RI &middot; Mixed-use</div>
+          </div>
+        </a>
+        <a class="tile" href="#contact" data-target="contact" data-reveal data-reveal-delay="80" style="position:relative;overflow:hidden;border-radius:3px;background:#e7e7e3;flex:1 1 300px;min-width:260px;height:clamp(320px,42vw,470px);display:block;text-decoration:none;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#e6e6e2 0 16px,#ededea 16px 32px);"></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a9a3;">Project image</span></div>
+          <div data-ov style="position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(22,22,23,0) 30%,rgba(22,22,23,.86) 100%);transition:opacity .45s ease;"></div>
+          <div data-cap style="position:absolute;left:0;bottom:0;padding:30px 32px;opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease;">
+            <div style="width:26px;height:2px;background:#D90A0F;margin-bottom:14px;"></div>
+            <div style="font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.2vw,2rem);color:#FAFAF8;line-height:1.1;">Eastside Residences</div>
+            <div style="margin-top:6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,248,.66);">Providence, RI &middot; Residential</div>
+          </div>
+        </a>
+        <a class="tile" href="#contact" data-target="contact" data-reveal style="position:relative;overflow:hidden;border-radius:3px;background:#e7e7e3;flex:1 1 280px;min-width:240px;height:clamp(280px,30vw,360px);display:block;text-decoration:none;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#e9e9e5 0 16px,#efefeb 16px 32px);"></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a9a3;">Project image</span></div>
+          <div data-ov style="position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(22,22,23,0) 30%,rgba(22,22,23,.86) 100%);transition:opacity .45s ease;"></div>
+          <div data-cap style="position:absolute;left:0;bottom:0;padding:26px 28px;opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease;">
+            <div style="width:26px;height:2px;background:#D90A0F;margin-bottom:12px;"></div>
+            <div style="font-family:'Fraunces',serif;font-size:clamp(1.35rem,1.9vw,1.7rem);color:#FAFAF8;line-height:1.1;">Mill District Lofts</div>
+            <div style="margin-top:6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,248,.66);">Pawtucket, RI &middot; Adaptive reuse</div>
+          </div>
+        </a>
+        <a class="tile" href="#contact" data-target="contact" data-reveal data-reveal-delay="80" style="position:relative;overflow:hidden;border-radius:3px;background:#e7e7e3;flex:1.4 1 320px;min-width:240px;height:clamp(280px,30vw,360px);display:block;text-decoration:none;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#e6e6e2 0 16px,#ededea 16px 32px);"></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a9a3;">Project image</span></div>
+          <div data-ov style="position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(22,22,23,0) 30%,rgba(22,22,23,.86) 100%);transition:opacity .45s ease;"></div>
+          <div data-cap style="position:absolute;left:0;bottom:0;padding:26px 28px;opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease;">
+            <div style="width:26px;height:2px;background:#D90A0F;margin-bottom:12px;"></div>
+            <div style="font-family:'Fraunces',serif;font-size:clamp(1.35rem,1.9vw,1.7rem);color:#FAFAF8;line-height:1.1;">Bayview Commons</div>
+            <div style="margin-top:6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,248,.66);">Newport, RI &middot; Mixed-use</div>
+          </div>
+        </a>
+        <a class="tile" href="#contact" data-target="contact" data-reveal data-reveal-delay="160" style="position:relative;overflow:hidden;border-radius:3px;background:#e7e7e3;flex:1 1 280px;min-width:240px;height:clamp(280px,30vw,360px);display:block;text-decoration:none;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#e9e9e5 0 16px,#efefeb 16px 32px);"></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a9a3;">Project image</span></div>
+          <div data-ov style="position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(22,22,23,0) 30%,rgba(22,22,23,.86) 100%);transition:opacity .45s ease;"></div>
+          <div data-cap style="position:absolute;left:0;bottom:0;padding:26px 28px;opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease;">
+            <div style="width:26px;height:2px;background:#D90A0F;margin-bottom:12px;"></div>
+            <div style="font-family:'Fraunces',serif;font-size:clamp(1.35rem,1.9vw,1.7rem);color:#FAFAF8;line-height:1.1;">Harbour Yard</div>
+            <div style="margin-top:6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,248,.66);">Bristol, RI &middot; Waterfront</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" style="background:#fff;padding:clamp(90px,12vh,160px) clamp(20px,5vw,72px);border-top:1px solid rgba(22,22,23,.07);">
+    <div style="max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(40px,7vw,110px);">
+      <div data-reveal style="flex:1 1 360px;min-width:280px;">
+        <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="width:30px;height:2px;background:#D90A0F;display:block;"></span>
+          <span style="font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#575758;">About</span>
+        </div>
+        <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2rem,3.4vw,3rem);line-height:1.12;letter-spacing:-.015em;color:#161617;">Built in Rhode Island. Invested for the long term.</h2>
+      </div>
+      <div data-reveal data-reveal-delay="100" style="flex:1 1 420px;min-width:300px;max-width:560px;">
+        <p style="margin:0 0 22px;font-size:clamp(16px,1.3vw,18px);line-height:1.7;color:#3a3a3b;">T&amp;O Development Group is a Rhode Island&ndash;based real estate development and investment firm. We acquire, develop, and manage properties across the region, pairing institutional discipline with hands-on local execution.</p>
+        <p style="margin:0 0 40px;font-size:16px;line-height:1.7;color:#575758;">Licensed and experienced, we invest alongside our partners and hold much of what we build. Our work is measured not by transactions, but by the lasting value we create for the communities and investors we serve.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:1px;background:rgba(22,22,23,.1);border:1px solid rgba(22,22,23,.1);">
+          <div style="flex:1 1 200px;background:#fff;padding:22px 24px;">
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a98;margin-bottom:8px;">Headquarters</div>
+            <div style="font-family:'Fraunces',serif;font-size:18px;color:#161617;">Providence, Rhode Island</div>
+          </div>
+          <div style="flex:1 1 200px;background:#fff;padding:22px 24px;">
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a98;margin-bottom:8px;">Focus</div>
+            <div style="font-family:'Fraunces',serif;font-size:18px;color:#161617;">Acquire &middot; Develop &middot; Invest</div>
+          </div>
+          <div style="flex:1 1 200px;background:#fff;padding:22px 24px;">
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a98;margin-bottom:8px;">Status</div>
+            <div style="font-family:'Fraunces',serif;font-size:18px;color:#161617;">Licensed in Rhode Island</div>
+          </div>
+          <div style="flex:1 1 200px;background:#fff;padding:22px 24px;">
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a98;margin-bottom:8px;">Horizon</div>
+            <div style="font-family:'Fraunces',serif;font-size:18px;color:#161617;">Long-term holds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" style="background:#FAFAF8;padding:clamp(90px,12vh,160px) clamp(20px,5vw,72px);border-top:1px solid rgba(22,22,23,.07);">
+    <div style="max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,96px);">
+      <div data-reveal style="flex:1 1 360px;min-width:300px;">
+        <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="width:30px;height:2px;background:#D90A0F;display:block;"></span>
+          <span style="font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#575758;">Contact</span>
+        </div>
+        <h2 style="margin:0 0 22px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2rem,3.4vw,3rem);line-height:1.12;letter-spacing:-.015em;color:#161617;">Let&rsquo;s build something that lasts.</h2>
+        <p style="margin:0 0 46px;max-width:380px;font-size:16px;line-height:1.66;color:#575758;font-weight:300;">Tell us about your property, project, or investment opportunity. We respond to every serious inquiry.</p>
+
+        <div style="display:flex;flex-direction:column;gap:26px;max-width:360px;">
+          <div style="border-top:1px solid rgba(22,22,23,.12);padding-top:18px;">
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a98;margin-bottom:7px;">Email</div>
+            <a class="link-red" id="email-link-1" href="#" data-user="invest" data-domain="todevelopmentgroup.com" style="font-family:'Fraunces',serif;font-size:clamp(18px,1.5vw,21px);color:#161617;text-decoration:none;"></a>
+          </div>
+          <div style="border-top:1px solid rgba(22,22,23,.12);padding-top:18px;">
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a98;margin-bottom:7px;">Phone</div>
+            <a class="link-red" href="tel:+14015550100" style="font-family:'Fraunces',serif;font-size:clamp(18px,1.5vw,21px);color:#161617;text-decoration:none;">(401) 555-0100</a>
+          </div>
+          <div style="border-top:1px solid rgba(22,22,23,.12);padding-top:18px;">
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a98;margin-bottom:7px;">Office</div>
+            <div style="font-family:'Fraunces',serif;font-size:clamp(18px,1.5vw,21px);color:#161617;">Providence, Rhode Island</div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal data-reveal-delay="100" style="flex:1 1 440px;min-width:300px;max-width:600px;">
+        <form id="contact-form" novalidate style="background:#fff;border:1px solid rgba(22,22,23,.1);border-radius:4px;padding:clamp(28px,3.5vw,44px);">
+          <div style="display:flex;flex-wrap:wrap;gap:20px;">
+            <label style="flex:1 1 200px;min-width:180px;display:block;">
+              <span style="display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#575758;margin-bottom:9px;">Name</span>
+              <input class="field" id="f-name" type="text" placeholder="Your name" style="width:100%;padding:14px 16px;border:1px solid rgba(22,22,23,.18);border-radius:4px;background:#FAFAF8;font-size:15px;color:#161617;outline:none;transition:border-color .2s ease,background .2s ease;"/>
+              <span id="err-name" style="display:none;margin-top:7px;font-size:12px;color:#D90A0F;">Please enter your name.</span>
+            </label>
+            <label style="flex:1 1 200px;min-width:180px;display:block;">
+              <span style="display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#575758;margin-bottom:9px;">Phone</span>
+              <input class="field" id="f-phone" type="tel" placeholder="(401) 000-0000" style="width:100%;padding:14px 16px;border:1px solid rgba(22,22,23,.18);border-radius:4px;background:#FAFAF8;font-size:15px;color:#161617;outline:none;transition:border-color .2s ease,background .2s ease;"/>
+            </label>
+          </div>
+          <label style="display:block;margin-top:20px;">
+            <span style="display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#575758;margin-bottom:9px;">Email</span>
+            <input class="field" id="f-email" type="email" placeholder="you@company.com" style="width:100%;padding:14px 16px;border:1px solid rgba(22,22,23,.18);border-radius:4px;background:#FAFAF8;font-size:15px;color:#161617;outline:none;transition:border-color .2s ease,background .2s ease;"/>
+            <span id="err-email" style="display:none;margin-top:7px;font-size:12px;color:#D90A0F;">Please enter a valid email address.</span>
+          </label>
+          <label style="display:block;margin-top:20px;">
+            <span style="display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#575758;margin-bottom:9px;">Message</span>
+            <textarea class="field" id="f-message" rows="4" placeholder="Tell us about the opportunity" style="width:100%;padding:14px 16px;border:1px solid rgba(22,22,23,.18);border-radius:4px;background:#FAFAF8;font-size:15px;color:#161617;outline:none;resize:vertical;min-height:120px;transition:border-color .2s ease,background .2s ease;"></textarea>
+            <span id="err-message" style="display:none;margin-top:7px;font-size:12px;color:#D90A0F;">Please add a short message.</span>
+          </label>
+          <button class="btn-submit" type="submit" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:#D90A0F;color:#fff;font-size:15px;font-weight:500;letter-spacing:.01em;padding:16px 30px;border:none;border-radius:4px;cursor:pointer;transition:background .25s ease,transform .25s ease,box-shadow .25s ease;box-shadow:0 8px 22px rgba(217,10,15,.24);">Send inquiry <span style="font-size:16px;">&rarr;</span></button>
+        </form>
+        <div id="contact-success" style="display:none;background:#161617;border-radius:4px;padding:clamp(40px,5vw,64px);min-height:300px;flex-direction:column;justify-content:center;">
+          <div style="width:30px;height:2px;background:#D90A0F;margin-bottom:24px;"></div>
+          <h3 style="margin:0 0 14px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(1.7rem,2.6vw,2.3rem);line-height:1.1;color:#FAFAF8;">Thank you &mdash; we&rsquo;ll be in touch.</h3>
+          <p style="margin:0;font-size:16px;line-height:1.66;color:rgba(250,250,248,.66);font-weight:300;">Your inquiry has been received. A member of our team will respond personally, usually within two business days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#161617;padding:clamp(64px,8vh,100px) clamp(20px,5vw,72px) 40px;">
+    <div style="max-width:1320px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;gap:48px;justify-content:space-between;padding-bottom:56px;border-bottom:1px solid rgba(250,250,248,.12);">
+        <div style="flex:1 1 300px;max-width:380px;">
+          <img src="assets/logo-light.png" alt="T&amp;O Development Group" style="height:52px;width:auto;margin-bottom:24px;"/>
+          <p style="margin:0;font-size:15px;line-height:1.66;color:rgba(250,250,248,.56);font-weight:300;">A Rhode Island&ndash;based real estate development and investment firm. We acquire, develop, and hold real estate built to endure.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,84px);">
+          <div>
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,250,248,.4);margin-bottom:18px;">Explore</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <a class="link-red" href="#approach" data-target="approach" style="font-size:15px;color:rgba(250,250,248,.78);text-decoration:none;">Approach</a>
+              <a class="link-red" href="#process" data-target="process" style="font-size:15px;color:rgba(250,250,248,.78);text-decoration:none;">Process</a>
+              <a class="link-red" href="#projects" data-target="projects" style="font-size:15px;color:rgba(250,250,248,.78);text-decoration:none;">Projects</a>
+              <a class="link-red" href="#about" data-target="about" style="font-size:15px;color:rgba(250,250,248,.78);text-decoration:none;">About</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,250,248,.4);margin-bottom:18px;">Contact</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <a class="link-red" id="email-link-2" href="#" data-user="invest" data-domain="todevelopmentgroup.com" style="font-size:15px;color:rgba(250,250,248,.78);text-decoration:none;"></a>
+              <a class="link-red" href="tel:+14015550100" style="font-size:15px;color:rgba(250,250,248,.78);text-decoration:none;">(401) 555-0100</a>
+              <span style="font-size:15px;color:rgba(250,250,248,.78);">Providence, Rhode Island</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:28px;">
+        <span style="font-size:13px;color:rgba(250,250,248,.42);">&copy; 2026 T&amp;O Development Group LLC. All rights reserved.</span>
+        <span style="font-size:13px;color:rgba(250,250,248,.42);">Rhode Island &middot; Licensed real estate developer &amp; investor</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

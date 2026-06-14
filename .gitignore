@@ -1,0 +1,11 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Agent/editor local config (machine-specific)
+.claude/settings.local.json
+
+# Dependencies / logs (none expected, kept for safety)
+node_modules/
+*.log
