@@ -1,7 +1,7 @@
 /* ===========================================================
    T&O Development Group LLC — interaction logic
-   - scroll-DRIVEN hero: scroll progress (0->1) scrubs the video,
-     cross-fades the headline, and highlights the active phase
+   - scroll-DRIVEN hero: scroll progress (0->1) scrubs a canvas
+     frame-sequence, cross-fades the headline, highlights the phase
    - transparent -> solid header (transparent while hero is pinned)
    - scroll-reveal of [data-reveal] elements
    - obfuscated email assembly
@@ -11,15 +11,9 @@
   'use strict';
 
   /* ---------- shared hero state ---------- */
-  var heroVideo = null;
   var headlines = [];
   var phaseItems = [];
-  var targetProgress = 0; // where scroll wants the video (0..1)
-  var displayTime = 0;    // smoothed video time we actually render
-  var scheduled = false;  // a frame step is queued (rVFC/rAF)
   var currentIdx = -1;    // active headline/phase index, for cheap diffing
-  var seekEnabled = false;
-  var scrubReady = false; // only seek once the clip is buffered enough
 
   function clamp(v, lo, hi) { return v < lo ? lo : (v > hi ? hi : v); }
 
@@ -94,78 +88,95 @@
     if (max > 0) c.style.height = max + 'px';
   }
 
-  // iOS/Safari need a muted play()->pause() before they will honour
-  // programmatic currentTime seeks. Do it once.
-  function enableSeek() {
-    if (seekEnabled || !heroVideo) return;
-    seekEnabled = true;
-    heroVideo.muted = true;
-    var p = heroVideo.play();
-    if (p && typeof p.then === 'function') {
-      p.then(function () { heroVideo.pause(); }).catch(function () {});
-    } else {
-      try { heroVideo.pause(); } catch (e) {}
+  /* ---------- Canvas frame-sequence (Apple-style scroll scrub) ---------- */
+  var FRAME_COUNT = 96;
+  var canvas = null, ctx = null;
+  var frames = [];          // preloaded Image objects
+  var targetFrame = 0;      // frame the scroll wants
+  var currentFrame = 0;     // smoothed frame we actually draw
+  var rafId = null;
+
+  // Horizontal focus for the "cover" crop: bias toward the house on narrow
+  // screens (matches the old object-position: 72%); centered otherwise.
+  function focusX() { return window.innerWidth <= 680 ? 0.72 : 0.5; }
+
+  function frameReady(i) {
+    var im = frames[i];
+    return !!(im && im.complete && im.naturalWidth > 0);
+  }
+  // Nearest already-loaded frame to idx, so we never blank while loading.
+  function nearestLoaded(idx) {
+    if (frameReady(idx)) return idx;
+    for (var d = 1; d < FRAME_COUNT; d++) {
+      if (idx - d >= 0 && frameReady(idx - d)) return idx - d;
+      if (idx + d < FRAME_COUNT && frameReady(idx + d)) return idx + d;
     }
+    return -1;
   }
 
-  // Capture the first frame to use as a poster, so the hero is never black.
-  function makePoster() {
-    if (!heroVideo) return;
-    try {
-      var w = heroVideo.videoWidth, h = heroVideo.videoHeight;
-      if (!w || !h) return;
-      var cv = document.createElement('canvas');
-      cv.width = w; cv.height = h;
-      cv.getContext('2d').drawImage(heroVideo, 0, 0, w, h);
-      heroVideo.setAttribute('poster', cv.toDataURL('image/jpeg', 0.82));
-    } catch (e) { /* cross-origin / unsupported — fall back to dark bg */ }
+  // Draw an image to fill the canvas (object-fit: cover), cropping overflow.
+  function drawCover(img) {
+    if (!ctx || !canvas) return;
+    var cw = canvas.clientWidth, ch = canvas.clientHeight;
+    if (!cw || !ch) return;
+    var iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+    if (!iw || !ih) return;
+    var ir = iw / ih, cr = cw / ch, w, h;
+    if (ir > cr) { h = ch; w = ch * ir; } else { w = cw; h = cw / ir; }
+    var x = (cw - w) * focusX(), y = (ch - h) * 0.5;
+    ctx.drawImage(img, x, y, w, h);
   }
 
-  // Has the whole clip buffered? We delay scrubbing until it has, so a seek
-  // never lands in an unbuffered region and stutters.
-  function fullyBuffered() {
-    var v = heroVideo;
-    if (!v || !v.duration) return false;
-    try {
-      for (var i = 0; i < v.buffered.length; i++) {
-        if (v.buffered.start(i) <= 0.1 && v.buffered.end(i) >= v.duration - 0.3) return true;
-      }
-    } catch (e) {}
-    return false;
-  }
-  function markScrubReady() { if (!scrubReady) { scrubReady = true; schedule(); } }
-
-  // Pace the scrub to real decoded frames: prefer requestVideoFrameCallback
-  // (fires when a frame is actually presented) and fall back to rAF. A short
-  // watchdog guarantees progress when a sub-frame seek presents no new frame.
-  function schedule() {
-    if (scheduled) return;
-    scheduled = true;
-    var ran = false;
-    var run = function () { if (ran) return; ran = true; scheduled = false; tick(); };
-    if (heroVideo && typeof heroVideo.requestVideoFrameCallback === 'function') {
-      heroVideo.requestVideoFrameCallback(run);
-      setTimeout(function () { if (!ran) requestAnimationFrame(run); }, 120);
-    } else {
-      requestAnimationFrame(run);
-    }
+  function draw(i) {
+    var idx = clamp(Math.round(i), 0, FRAME_COUNT - 1);
+    var use = nearestLoaded(idx);
+    if (use >= 0) drawCover(frames[use]);
+    // else: the CSS poster background stays visible (never blank)
   }
 
-  // Ease the displayed time toward the scroll target, then write currentTime.
-  // Never seek straight from the scroll event.
+  // Size the canvas backing store for the device pixel ratio (crisp on
+  // retina), then redraw.
+  function resizeCanvas() {
+    if (!canvas) return;
+    var dpr = window.devicePixelRatio || 1;
+    var cw = canvas.clientWidth, ch = canvas.clientHeight;
+    canvas.width = Math.max(1, Math.round(cw * dpr));
+    canvas.height = Math.max(1, Math.round(ch * dpr));
+    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw(currentFrame);
+  }
+
+  // rAF loop: ease currentFrame toward the scroll target and draw the
+  // rounded frame, so the scrub feels fluid rather than stepped.
+  function schedule() { if (rafId == null) rafId = requestAnimationFrame(tick); }
   function tick() {
-    var v = heroVideo;
-    if (!v || !v.duration || isNaN(v.duration)) return;
-    var targetTime = targetProgress * Math.max(0, v.duration - 0.06);
-    displayTime += (targetTime - displayTime) * 0.18;
-    if (Math.abs(targetTime - displayTime) < 0.01) displayTime = targetTime;
-    if (scrubReady && v.readyState >= 2) { try { v.currentTime = displayTime; } catch (e) {} }
-    if (Math.abs(targetTime - displayTime) > 0.008) schedule();
+    rafId = null;
+    currentFrame += (targetFrame - currentFrame) * 0.2;
+    if (Math.abs(targetFrame - currentFrame) < 0.1) currentFrame = targetFrame;
+    draw(currentFrame);
+    if (Math.abs(targetFrame - currentFrame) > 0.1) schedule();
+  }
+
+  function pad3(n) { n = String(n); while (n.length < 3) n = '0' + n; return n; }
+  function preloadFrames() {
+    for (var i = 1; i <= FRAME_COUNT; i++) {
+      var img = new Image();
+      img.decoding = 'async';
+      (function (im, index) {
+        im.onload = function () {
+          // If this is the frame we currently want (and we'd been showing a
+          // fallback/poster), repaint at the exact frame.
+          if (Math.round(currentFrame) === index) draw(currentFrame);
+        };
+      })(img, i - 1);
+      img.src = 'assets/frames/frame_' + pad3(i) + '.jpg';
+      frames[i - 1] = img;
+    }
   }
 
   function onHeroScroll() {
     var p = computeHeroProgress();
-    targetProgress = p;
+    targetFrame = p * (FRAME_COUNT - 1);
     var idx = clamp(Math.floor(p * 4), 0, 3);
     if (idx !== currentIdx) {
       currentIdx = idx;
@@ -176,44 +187,14 @@
   }
 
   function setupScrollHero() {
-    heroVideo = document.getElementById('hero-video');
+    canvas = document.getElementById('hero-canvas');
     headlines = Array.prototype.slice.call(document.querySelectorAll('.hero-headline'));
     phaseItems = Array.prototype.slice.call(document.querySelectorAll('.phase-item'));
-
-    if (heroVideo) {
-      heroVideo.removeAttribute('autoplay');
-      heroVideo.removeAttribute('loop');
-      heroVideo.muted = true;
-      heroVideo.defaultMuted = true;
-
-      var onMeta = function () {
-        try { heroVideo.currentTime = 0.001; } catch (e) {}
-        enableSeek();
-        sizeHeadlines();
-        onHeroScroll();
-      };
-      if (heroVideo.readyState >= 1) onMeta();
-      else heroVideo.addEventListener('loadedmetadata', onMeta, { once: true });
-
-      if (heroVideo.readyState >= 2) makePoster();
-      else heroVideo.addEventListener('loadeddata', makePoster, { once: true });
-
-      // Safety: buffer the whole clip before enabling the scrub, so seeking
-      // never hits an unbuffered region. Fall back after a few seconds so a
-      // slow/stalled network can never freeze the hero permanently.
-      heroVideo.preload = 'auto';
-      if (fullyBuffered() || heroVideo.readyState >= 4) markScrubReady();
-      heroVideo.addEventListener('canplaythrough', markScrubReady);
-      heroVideo.addEventListener('progress', function () { if (fullyBuffered()) markScrubReady(); });
-      setTimeout(markScrubReady, 8000);
-
-      // Enable seeking on the first user gesture (iOS safeguard)
-      var gesture = function () { enableSeek(); };
-      window.addEventListener('scroll', gesture, { once: true, passive: true });
-      window.addEventListener('touchstart', gesture, { once: true, passive: true });
-      window.addEventListener('click', gesture, { once: true });
+    if (canvas) {
+      ctx = canvas.getContext('2d');
+      preloadFrames();
+      resizeCanvas();
     }
-
     sizeHeadlines();
     onHeroScroll();
   }
@@ -266,22 +247,6 @@
       el.setAttribute('href', 'mailto:' + addr);
       el.textContent = addr;
       el.__filled = true;
-    });
-  }
-
-  /* ---------- Mute any audio; the hero video is scrubbed, never played ---------- */
-  function silenceMedia() {
-    document.querySelectorAll('audio').forEach(function (el) {
-      el.muted = true;
-      el.pause();
-      el.removeAttribute('autoplay');
-      el.removeAttribute('src');
-    });
-    document.querySelectorAll('video').forEach(function (el) {
-      el.muted = true;
-      el.defaultMuted = true;
-      el.volume = 0;
-      el.setAttribute('muted', '');
     });
   }
 
@@ -363,6 +328,7 @@
     onHeroScroll();
   }
   function onResize() {
+    resizeCanvas();
     sizeHeadlines();
     onHeroScroll();
   }
@@ -371,13 +337,12 @@
     applyHeaderState();
     setupReveal();
     fillEmails();
-    silenceMedia();
     setupScrollHero();
     setupScrollSpy();
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
-    window.addEventListener('load', sizeHeadlines);
+    window.addEventListener('load', function () { resizeCanvas(); sizeHeadlines(); });
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(sizeHeadlines).catch(function () {});
     }
