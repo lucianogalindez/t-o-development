@@ -39,5 +39,6 @@ O con cualquier servidor estático (p. ej. `npx serve`).
 
 ## Pendiente / notas
 
-- **Contenido placeholder** por reemplazar con datos reales: datos de contacto (`invest@todevelopmentgroup.com`, `(401) 555-0100`), nombres/fotos de proyectos y cifras (15+ / 40+ / $250M+).
+- **Datos de contacto reales** ya integrados: `info@tandodevelopmentgroup.com`, `(401) 536-1318`, 35 Grant Street, Providence, RI 02909.
+- **Contenido placeholder** por reemplazar con datos reales: nombres/fotos de proyectos y cifras (15+ / 40+ / $250M+).
 - El **formulario de contacto** valida del lado del cliente y muestra un estado de "gracias", pero **no está conectado** a un backend.
