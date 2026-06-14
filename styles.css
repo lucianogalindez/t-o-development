@@ -94,9 +94,11 @@ input, textarea, button { font-family: inherit; }
    under the navbar, and scale it down so it fits within 100vh. */
 @media (max-height: 760px) {
   .hero-row {
-    align-items: flex-start;
+    /* Center when the copy fits (uses the space, keeps the eyebrow off the
+       navbar); `safe` falls back to top-alignment only when it's truly tight. */
+    align-items: safe center;
     min-height: 0;
-    padding-top: clamp(84px, 11vh, 116px);
+    padding-top: clamp(96px, 13vh, 132px);
     padding-bottom: clamp(14px, 3vh, 32px);
   }
   .hero-headline { font-size: clamp(2rem, 5.2vh, 4.2rem); }
