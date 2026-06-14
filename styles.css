@@ -76,17 +76,38 @@ input, textarea, button { font-family: inherit; }
   #hero-video { object-position: 72% center; }
   /* Tighten the phase row so the stacked copy + phases fit a short screen */
   .phase-item { padding-top: 15px !important; padding-bottom: 15px !important; }
+  /* Top-anchor the copy with a clear gap below the navbar, instead of
+     vertical centering that crowded the eyebrow against the header. */
+  .hero-row {
+    align-items: flex-start;
+    min-height: 0;
+    padding-top: clamp(128px, 18vh, 164px);
+  }
 }
 
-/* Short, wide viewports (ultrawide monitors, laptops, landscape phones):
-   scale the headline by height so the hero copy + phase row always fit
-   100vh and the eyebrow never rides up under the navbar. */
-@media (min-width: 681px) and (max-height: 740px) {
-  .hero-headline { font-size: clamp(2.3rem, 5.6vh, 4.4rem); }
+/* Short viewports of any width (short laptops/desktops, ultrawide, and
+   landscape phones): top-anchor the copy so it can never overflow upward
+   under the navbar, and scale it down so it fits within 100vh. */
+@media (max-height: 760px) {
   .hero-row {
-    padding-top: clamp(96px, 12vh, 120px);
-    padding-bottom: clamp(18px, 3.5vh, 36px);
+    align-items: flex-start;
+    min-height: 0;
+    padding-top: clamp(84px, 11vh, 116px);
+    padding-bottom: clamp(14px, 3vh, 32px);
   }
+  .hero-headline { font-size: clamp(2rem, 5.2vh, 4.2rem); }
+  #hero-headlines { min-height: 0; }
+}
+
+/* Landscape phones / very short: shrink the header and copy further so the
+   eyebrow and headline always stay on screen. */
+@media (max-height: 540px) {
+  #site-header { padding-top: 12px !important; padding-bottom: 12px !important; }
+  #site-logo { height: 34px !important; }
+  .hero-row { padding-top: clamp(64px, 15vh, 88px); }
+  .hero-headline { font-size: clamp(1.7rem, 6.8vh, 2.6rem); }
+  .hero-content p { font-size: 14px !important; line-height: 1.5 !important; margin-bottom: 22px !important; }
+  .phase-item { padding-top: 9px !important; padding-bottom: 9px !important; }
 }
 
 /* Smooth in-page jumps as a baseline; JS handles the header offset */
