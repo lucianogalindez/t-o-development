@@ -67,13 +67,17 @@ input, textarea, button { font-family: inherit; }
 .phase-item { opacity: .5; transition: opacity .4s ease; }
 .phase-item.is-active { opacity: 1; }
 
+/* Hero canvas frame-sequence; the poster background is the pre-load paint */
+#hero-canvas { background-position: center; }
+
 /* Stronger overlay on small screens so the headline stays legible
    over the brightest part of the video */
 @media (max-width: 680px) {
   .hero-overlay-mobile { opacity: 1 !important; }
   /* The house sits on the right of the frame; on a narrow viewport a
-     center crop hides it, so bias the crop toward the house. */
-  #hero-video { object-position: 72% center; }
+     center crop hides it, so bias the poster toward the house (the canvas
+     itself crops toward the house in JS via focusX). */
+  #hero-canvas { background-position: 72% center; }
   /* Tighten the phase row so the stacked copy + phases fit a short screen */
   .phase-item { padding-top: 15px !important; padding-bottom: 15px !important; }
   /* Top-anchor the copy with a clear gap below the navbar, instead of

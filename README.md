@@ -5,7 +5,7 @@ Sitio web de una sola página para **T&O Development Group LLC**, una firma de d
 ## Características
 
 - **Hero controlado por scroll** — la sección hero queda fija (`position: sticky`) dentro de un contenedor alto; un único valor de progreso (0→1) sincroniza tres cosas:
-  - **Scrub del video** — el scroll controla `video.currentTime` (día → atardecer; al subir, se revierte), suavizado con `requestAnimationFrame` + lerp y pausado a frames reales con `requestVideoFrameCallback` cuando está disponible.
+  - **Scrub por secuencia de frames (canvas)** — técnica estilo Apple: se precargan 96 JPEG (`assets/frames/frame_001..096.jpg`, día → atardecer) y el scroll dibuja el frame correspondiente en un `<canvas>` (`object-fit: cover`, nítido en retina vía `devicePixelRatio`), suavizado con `requestAnimationFrame` + lerp. Fluido en desktop y móvil. El póster (`assets/poster-daydusk.jpg`) es la pintura inicial hasta que cargan los frames (nunca queda en negro).
   - **Cross-fade del titular** — 4 mensajes que se funden según el progreso.
   - **Resaltado de fase** — la fase activa (01–04) se enciende en rojo y las demás se atenúan.
 - **Secciones**: Hero · Posicionamiento · Approach · Process · Projects · About · Contact · Footer.
@@ -19,7 +19,8 @@ index.html                 # marcado y estilos inline (fieles al diseño)
 styles.css                 # estados :hover/:focus, responsive, keyframes, hero por scroll
 script.js                  # lógica (hero por scroll, header, reveal, menú, formulario)
 assets/
-  daydusk-scrub.mp4        # video del hero (keyframe por frame, para scrub fluido)
+  frames/                  # 96 JPEG del hero (frame_001..096), día -> atardecer
+  poster-daydusk.jpg       # pintura inicial del hero hasta que cargan los frames
   logo.png                 # logo oscuro (header sólido)
   logo-light.png           # logo claro (sobre el hero)
 .claude/static-server.cjs  # servidor estático local sin dependencias (para previsualizar)
