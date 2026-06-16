@@ -70,12 +70,35 @@ input, textarea, button { font-family: inherit; }
 /* Hero canvas frame-sequence; the poster background is the pre-load paint */
 #hero-canvas { background-position: center; }
 
-/* Transition band BELOW the pinned hero: the dark hero dissolves into the
-   off-white section. It lives after the 100vh hero, so it's only revealed
-   once you scroll past the hero — the first screen stays full-bleed image. */
-#hero-fade {
-  height: clamp(150px, 28vh, 340px);
-  background: linear-gradient(180deg, #161617 0%, #161617 20%, #FAFAF8 100%);
+/* Premium hero -> content transition (no gradient band).
+   The hero stays a clean 100vh with a little dark breathing room below the
+   phase row; the white section then rises over the dark like an elevated
+   editorial panel: a small negative-margin overlap, softly rounded top
+   corners, and a subtle lifted shadow. Only seen after the fold. */
+#hero { padding-bottom: clamp(48px, 6vh, 90px); }
+
+.section-rise {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(-40px, -3.2vh, -24px);
+  border-top-left-radius: clamp(14px, 1.8vw, 24px);
+  border-top-right-radius: clamp(14px, 1.8vw, 24px);
+  box-shadow: 0 -22px 48px -28px rgba(8, 8, 9, .5);
+}
+
+/* Shrink the breathing room + overlap on short viewports, so the hero copy
+   still fits and the overlap never reaches the phase row. */
+@media (max-height: 760px) {
+  #hero { padding-bottom: clamp(28px, 4vh, 52px); }
+  .section-rise { margin-top: clamp(-30px, -2.4vh, -18px); }
+}
+@media (max-height: 540px) {
+  #hero { padding-bottom: clamp(16px, 3vh, 30px); }
+  .section-rise {
+    margin-top: clamp(-18px, -2vh, -12px);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
 }
 
 /* Stronger overlay on small screens so the headline stays legible
