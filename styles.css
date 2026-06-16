@@ -70,15 +70,12 @@ input, textarea, button { font-family: inherit; }
 /* Hero canvas frame-sequence; the poster background is the pre-load paint */
 #hero-canvas { background-position: center; }
 
-/* Let the hero image continue a bit below the phase row and dissolve into
-   the off-white section, so the dark->light transition isn't an abrupt cut.
-   padding-bottom (border-box) lifts the phase row off the edge; #hero-fade
-   fills the exposed band and fades the imagery to #FAFAF8. */
-#hero { padding-bottom: clamp(96px, 15vh, 190px); }
-#hero-fade { height: clamp(96px, 15vh, 190px); }
-@media (max-height: 540px) {
-  #hero { padding-bottom: clamp(40px, 9vh, 70px); }
-  #hero-fade { height: clamp(40px, 9vh, 70px); }
+/* Transition band BELOW the pinned hero: the dark hero dissolves into the
+   off-white section. It lives after the 100vh hero, so it's only revealed
+   once you scroll past the hero — the first screen stays full-bleed image. */
+#hero-fade {
+  height: clamp(150px, 28vh, 340px);
+  background: linear-gradient(180deg, #161617 0%, #161617 20%, #FAFAF8 100%);
 }
 
 /* Stronger overlay on small screens so the headline stays legible
