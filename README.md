@@ -2,6 +2,8 @@
 
 Sitio web de una sola página para **T&O Development Group LLC**, una firma de desarrollo e inversión inmobiliaria con base en Rhode Island. Construido como un sitio estático (HTML/CSS/JS, sin build) a partir de un diseño de Claude Design.
 
+**En producción**: [tandodevelopmentgroup.com](https://tandodevelopmentgroup.com) — dominio propio (GoDaddy) apuntado a Netlify (`www` redirige al apex).
+
 ## Características
 
 - **Hero controlado por scroll** — la sección hero queda fija (`position: sticky`) dentro de un contenedor alto; un único valor de progreso (0→1) sincroniza tres cosas:
