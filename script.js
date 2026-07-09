@@ -10,6 +10,9 @@
 (function () {
   'use strict';
 
+  // Contact form -> n8n webhook (kicks off the email flow)
+  var CONTACT_WEBHOOK_URL = 'https://n8n-n8n.agjjtd.easypanel.host/webhook/df2e8197-4bbe-4063-91f1-0232bcd292ea';
+
   /* ---------- shared hero state ---------- */
   var headlines = [];
   var phaseItems = [];
@@ -307,6 +310,7 @@
     e.preventDefault();
     var get = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
     var name = get('f-name');
+    var phone = get('f-phone');
     var email = get('f-email');
     var message = get('f-message');
     var errName = !name;
@@ -316,10 +320,43 @@
     setError('err-email', errEmail);
     setError('err-message', errMessage);
     if (errName || errEmail || errMessage) return;
-    var form = document.getElementById('contact-form');
-    var success = document.getElementById('contact-success');
-    if (form) form.style.display = 'none';
-    if (success) success.style.display = 'flex';
+
+    var btn = document.getElementById('f-submit');
+    var formError = document.getElementById('form-error');
+    if (formError) formError.style.display = 'none';
+    var btnHTML = btn ? btn.innerHTML : '';
+    if (btn) { btn.disabled = true; btn.style.opacity = '.7'; btn.style.cursor = 'default'; btn.innerHTML = 'Sending&hellip;'; }
+
+    var done = false;
+    var showSuccess = function () {
+      if (done) return; done = true;
+      var form = document.getElementById('contact-form');
+      var success = document.getElementById('contact-success');
+      if (form) form.style.display = 'none';
+      if (success) success.style.display = 'flex';
+    };
+    var showFailure = function () {
+      if (done) return; done = true;
+      if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = 'pointer'; btn.innerHTML = btnHTML; }
+      if (formError) formError.style.display = 'block';
+    };
+
+    // Send to the n8n webhook. Use a urlencoded body in no-cors mode so the
+    // request reaches n8n even without CORS headers configured; n8n parses the
+    // fields into $json.body. We can't read the (opaque) response, so a
+    // resolved request is treated as delivered and a network error as failure.
+    if (typeof fetch !== 'function') { showFailure(); return; }
+    var body = new URLSearchParams();
+    body.set('name', name);
+    body.set('email', email);
+    body.set('phone', phone);
+    body.set('message', message);
+    body.set('source', location.hostname || 'website');
+    body.set('submittedAt', new Date().toISOString());
+
+    fetch(CONTACT_WEBHOOK_URL, { method: 'POST', mode: 'no-cors', body: body, keepalive: true })
+      .then(showSuccess)
+      .catch(showFailure);
   }
 
   /* ---------- Wire everything up ---------- */

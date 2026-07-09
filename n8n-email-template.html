@@ -1,0 +1,65 @@
+<div style="margin:0;padding:0;background-color:#FAFAF8;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FAFAF8;padding:32px 16px;">
+<tr><td align="center">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border:1px solid rgba(22,22,23,.1);border-radius:4px;overflow:hidden;">
+
+<!-- Header -->
+<tr><td style="background-color:#161617;padding:28px 36px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td>
+<span style="font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:bold;color:#FAFAF8;letter-spacing:.02em;">T&amp;O <span style="color:#D90A0F;font-style:italic;">Development</span> Group</span>
+</td></tr></table>
+</td></tr>
+
+<!-- Eyebrow + title -->
+<tr><td style="padding:36px 36px 8px;">
+<table role="presentation" cellpadding="0" cellspacing="0"><tr>
+<td style="width:24px;height:2px;background-color:#D90A0F;font-size:0;line-height:0;">&nbsp;</td>
+<td style="padding-left:12px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:#575758;">New Website Inquiry</td>
+</tr></table>
+<h1 style="margin:16px 0 0;font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:26px;line-height:1.25;color:#161617;">Someone reached out through the contact form.</h1>
+</td></tr>
+
+<!-- Fields -->
+<tr><td style="padding:24px 36px 8px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+
+<tr>
+<td style="padding:16px 0;border-top:1px solid rgba(22,22,23,.1);font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:#9a9a98;width:120px;vertical-align:top;">Name</td>
+<td style="padding:16px 0;border-top:1px solid rgba(22,22,23,.1);font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#161617;">{{ $json.body.name }}</td>
+</tr>
+
+<tr>
+<td style="padding:16px 0;border-top:1px solid rgba(22,22,23,.1);font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:#9a9a98;width:120px;vertical-align:top;">Email</td>
+<td style="padding:16px 0;border-top:1px solid rgba(22,22,23,.1);font-family:Georgia,'Times New Roman',serif;font-size:16px;"><a href="mailto:{{ $json.body.email }}" style="color:#D90A0F;text-decoration:none;">{{ $json.body.email }}</a></td>
+</tr>
+
+<tr>
+<td style="padding:16px 0;border-top:1px solid rgba(22,22,23,.1);font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:#9a9a98;width:120px;vertical-align:top;">Phone</td>
+<td style="padding:16px 0;border-top:1px solid rgba(22,22,23,.1);font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#161617;"><a href="tel:{{ $json.body.phone }}" style="color:#161617;text-decoration:none;">{{ $json.body.phone }}</a></td>
+</tr>
+
+<tr>
+<td style="padding:16px 0;border-top:1px solid rgba(22,22,23,.1);border-bottom:1px solid rgba(22,22,23,.1);font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:#9a9a98;width:120px;vertical-align:top;">Message</td>
+<td style="padding:16px 0;border-top:1px solid rgba(22,22,23,.1);border-bottom:1px solid rgba(22,22,23,.1);font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#3a3a3b;white-space:pre-line;">{{ $json.body.message }}</td>
+</tr>
+
+</table>
+</td></tr>
+
+<!-- Footer meta -->
+<tr><td style="padding:20px 36px 32px;">
+<p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#9a9a98;">Submitted {{ $json.body.submittedAt }} via {{ $json.body.source }}</p>
+</td></tr>
+
+</table>
+
+<!-- Sub-footer -->
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+<tr><td style="padding:20px 8px;text-align:center;">
+<p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#a9a9a3;">T&amp;O Development Group LLC &middot; 35 Grant Street, Providence, RI 02909</p>
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+</div>
