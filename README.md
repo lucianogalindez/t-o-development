@@ -8,7 +8,7 @@ Sitio web de una sola página para **T&O Development Group LLC**, una firma de d
   - **Scrub por secuencia de frames (canvas)** — técnica estilo Apple: se precargan 96 JPEG (`assets/frames/frame_001..096.jpg`, día → atardecer) y el scroll dibuja el frame correspondiente en un `<canvas>` (`object-fit: cover`, nítido en retina vía `devicePixelRatio`), suavizado con `requestAnimationFrame` + lerp. Fluido en desktop y móvil. El póster (`assets/poster-daydusk.jpg`) es la pintura inicial hasta que cargan los frames (nunca queda en negro).
   - **Cross-fade del titular** — 4 mensajes que se funden según el progreso.
   - **Resaltado de fase** — la fase activa (01–04) se enciende en rojo y las demás se atenúan.
-- **Secciones**: Hero · Posicionamiento · Approach · Process · Projects · About · Contact · Footer.
+- **Secciones**: Hero · Posicionamiento · Approach · Process · About · Contact · Footer. (La galería de *Projects* y la fila de *cifras* se quitaron por ahora — ver notas.)
 - **Responsive** (escritorio / tablet / móvil) con encuadre del video ajustado en pantallas angostas.
 - **Detalles**: header transparente sobre el hero que pasa a sólido al hacer scroll, scroll-reveal de bloques editoriales, scroll-spy en el nav, foco visible accesible y respeto por `prefers-reduced-motion`.
 
@@ -41,5 +41,5 @@ O con cualquier servidor estático (p. ej. `npx serve`).
 ## Pendiente / notas
 
 - **Datos de contacto reales** ya integrados: `info@tandodevelopmentgroup.com`, `(401) 536-1318`, 35 Grant Street, Providence, RI 02909.
-- **Contenido placeholder** por reemplazar con datos reales: nombres/fotos de proyectos y cifras (15+ / 40+ / $250M+).
+- **Quitados por ahora** (para tener una versión placeholder sin datos irreales): la sección *Projects/galería* y la fila de *cifras* (15+ / 40+ / $250M+). Se reintegran cuando haya proyectos y números reales.
 - El **formulario de contacto** valida del lado del cliente y muestra un estado de "gracias", pero **no está conectado** a un backend.

@@ -280,7 +280,7 @@
 
   /* ---------- Scroll-spy: mark the nav link of the section in view ---------- */
   function setupScrollSpy() {
-    var ids = ['approach', 'process', 'projects', 'about'];
+    var ids = ['approach', 'process', 'about'];
     var sections = ids
       .map(function (id) { return document.getElementById(id); })
       .filter(Boolean);
